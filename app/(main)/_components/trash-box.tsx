@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { Spinner } from "@/components/spinner";
 import { Search, Trash, Undo } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { ConfirmModal } from "@/components/modal/confirm-modal";
 
 const TrashBox = () => {
   const router = useRouter();
@@ -25,7 +26,7 @@ const TrashBox = () => {
   });
 
   const onClick = (documentId: string) => {
-    router.push(`/documents/${documentId}`);
+    // router.push(`/documents/${documentId}`);
   };
 
   const onRestore = (
@@ -93,16 +94,16 @@ const TrashBox = () => {
                 role="button"
                 className="rounded-sm p-2 hover:bg-neutral-300 dark:hover:bg-neutral-600"
               >
-                {" "}
                 <Undo className="h-4 w-4 text-muted-foreground" />
               </div>
-              <div
-                onClick={() => onRemove(document._id)}
-                role="button"
-                className="rouded-sm p-2 hover:bg-neutral-300 dark:hover:bg-neutral-600"
-              >
-                <Trash className="h-4 w-4 text-muted-foreground" />
-              </div>
+              <ConfirmModal onConfirm={() => onRemove(document._id)}>
+                <div
+                  role="button"
+                  className="rouded-sm p-2 hover:bg-neutral-300 dark:hover:bg-neutral-600"
+                >
+                  <Trash className="h-4 w-4 text-muted-foreground" />
+                </div>
+              </ConfirmModal>
             </div>
           </div>
         ))}
