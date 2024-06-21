@@ -37,7 +37,7 @@ const DocumentsPage = () => {
         alt="Empty-dark"
         className="hidden dark:block"
       />
-      <h2> Welcome to {user?.firstName}'s Jotion</h2>
+      <h2> Welcome to {user?.firstName}&apos;s Jotion</h2>
       <Button onClick={onCreate}>
         <PlusCircle className="h-4 w-4 mr-2" />
         Create a note
